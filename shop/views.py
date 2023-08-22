@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.views.generic import DetailView
 
 from shop.models import Product
 
@@ -13,3 +14,11 @@ def home(request):
 
 def contacts(request):
     return render(request, 'shop/contacts.html')
+
+
+class NewDetailView(DetailView):
+    model = Product
+    template_name = 'shop/product.html'
+    context_object_name = 'product'
+
+
