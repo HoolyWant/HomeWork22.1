@@ -1,0 +1,27 @@
+{% extends 'shop/base.html'%}
+{% load my_tags %}
+
+{% block content %}
+<div class="container">
+    <div class="row text-center">
+        <div class="col-12">
+            <div class="card mb-4 box-shadow">
+                <div class="card-header">
+                    <h1 class="my-0 font-weight-normal">{{ object.title }}</h1>
+                </div>
+                <div class="card-body">
+                    <h4 class="card-title pricing-card-title">({{ object.slug }})</h4>
+                    <ul class="list-unstyled mt-3 mb-4 text-start m-3">
+                        <img src="{{ object.view|my_media }}" />
+                        <p><b>Содержимое блога:</b>
+                            {{ object.content }}</p>
+                        <p><b>Дата создания:</b> {{ object.created_at }}</p>
+                        <p><b>Просмотры:</b>{{ object.view_count }}</p>
+                    </ul>
+                    <a class="p-2 btn btn-outline-primary" href='{% url "shop:blog_list"%}'>Назад</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+{% endblock %}

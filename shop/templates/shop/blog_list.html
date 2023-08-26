@@ -1,0 +1,28 @@
+{% extends 'shop/base.html'%}
+
+{% block content %}
+<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+    <h1 class="display-4">LehaStore</h1>
+    <p class="lead">Магазин разных услуг и вещей</p>
+</div>
+
+<div class="container">
+    <div class="col-3">
+                <a class="p-2 btn btn-primary" href='{% url "shop:create_blog" %}'>Добавить блог</a>
+    </div>
+    <div class="row text-center">
+        {% for object in object_list %}
+        <div class="col-12">
+            <div class="card mb-4 box-shadow">
+                <div class="card-body">
+                    <h4 class="card-title pricing-card-title">{{ object }} ({{ object.slug }})</h4>
+                    <a class="p-2 btn btn-outline-primary" href='{% url "shop:blog_view" object.id %}'>Инфо</a>
+                    <a class="p-2 btn btn-outline-primary" href='{% url "shop:blog_edit" object.id %}'>Изменить</a>
+                    <a class="p-2 btn btn-outline-danger" href='{% url "shop:blog_delete" object.id %}'>Удалить</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    </div>
+    {% endblock %}
