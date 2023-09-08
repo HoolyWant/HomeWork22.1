@@ -2,30 +2,37 @@
 
 {% block content %}
 <div class="container">
-        <div class="row text-center">
-                <div class="card-title">
-                    {% if object %}
-                        <h1> Изменить товар </h1>
-                    {% else %}
-                        <h1> Добавить товар </h1>
-                    {% endif %}
-                </div>
-        </div>
         <div class="container">
             <div class="col-12">
                 <div class="card-body">
-                    <div class="row left">
-                        <div class="col-6 mb-5">
+                    <div class="row">
                             <form method="post">
-                                {% csrf_token %}
-                                {{ form.as_p }}
-                                <button type="submit" style="btn btn-primary">
+                                <div class="col-12 mb-5">
                                     {% if object %}
-                                        Сохранить
+                                        <h1> Изменить товар </h1>
                                     {% else %}
-                                        Создать
+                                        <h1> Добавить товар </h1>
                                     {% endif %}
-                                </button>
+                                    {% csrf_token %}
+                                    {{ form.as_p }}
+                                    <button type="submit" style="btn btn-primary">
+                                        {% if object %}
+                                            Сохранить
+                                        {% else %}
+                                            Создать
+                                        {% endif %}
+                                    </button>
+                                </div>
+                                {% if object %}
+                                <div class="col-12 mb-5">
+                                     <h1> Версия товара</h1>
+                                     {% csrf_token %}
+                                     {{ formset.management_form }}
+                                     {% for form in formset.forms %}
+                                         {{ form.as_p}}
+                                     {% endfor %}
+                                {% endif %}
+                                </div>
                             </form>
                         </div>
                     </div>
