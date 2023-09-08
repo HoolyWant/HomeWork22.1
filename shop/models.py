@@ -7,7 +7,7 @@ class Product(models.Model):
     product_name = models.CharField(max_length=150, verbose_name='продукт')
     description = models.CharField(max_length=150, verbose_name='описание', **NULLABLE)
     preview = models.ImageField(upload_to='products/', verbose_name='изображение', **NULLABLE)
-    category = models.CharField(max_length=150, verbose_name='описание', **NULLABLE)
+    category = models.CharField(max_length=150, verbose_name='категория', **NULLABLE)
     buy_cost = models.IntegerField(verbose_name='стоимость покупки')
 
     def __str__(self):

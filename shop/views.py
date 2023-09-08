@@ -6,6 +6,7 @@ from django.views.generic import (DetailView, ListView,
                                   CreateView, UpdateView, DeleteView)
 from pytils.translit import slugify
 
+from shop.forms import ProductForm
 from shop.models import Product, Blog
 
 
@@ -21,6 +22,23 @@ class ProductView(DetailView):
     model = Product
 
 
+class ProductUpdate(UpdateView):
+    model = Product
+    form_class = ProductForm
+    success_url = reverse_lazy('shop:product_list')
+
+
+class ProductCreate(CreateView):
+    model = Product
+    form_class = ProductForm
+    success_url = reverse_lazy('shop:product_list')
+
+
+class ProductDelete(DeleteView):
+    model = Product
+    success_url = reverse_lazy('shop:product_list')
+
+
 class BlogListView(ListView):
     model = Blog
 
@@ -28,7 +46,6 @@ class BlogListView(ListView):
         queryset = super().get_queryset(*args, **kwargs)
         queryset = queryset.filter(activity_sign=True)
         return queryset
-
 
 
 class BlogDetailView(DetailView):

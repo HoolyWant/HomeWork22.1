@@ -6,18 +6,25 @@
     <p class="lead">Магазин разных услуг и вещей</p>
 </div>
 
-<div class="container">
-    <div class="row text-center">
-        {% for object in object_list %}
-        <div class="col-3">
-            <div class="card mb-4 box-shadow">
-                <div class="card-body">
-                    <h4 class="card-title pricing-card-title">{{ object }}</h4>
-                    <a class="p-2 btn btn-outline-primary" href='{% url "shop:product_info" object.id %}'>Инфо</a>
+<div class="col-12">
+        <div class="container">
+            <div class="col-3 mb-5">
+                <a class="p-2 btn btn-primary" href='{% url "shop:product_create" %}'>Добавить товар</a>
+            </div>
+            <div class="row text-center">
+                {% for object in object_list %}
+                <div class="col-3">
+                    <div class="card mb-4 box-shadow">
+                        <div class="card-body">
+                            <h4 class="card-title pricing-card-title">{{ object }}</h4>
+                            <a class="p-2 btn btn-outline-primary" href='{% url "shop:product_info" object.id %}'>Инфо</a>
+                            <a class="p-2 btn btn-outline-primary" href='{% url "shop:product_edit" object.id %}'>Изменить</a>
+                            <a class="p-2 btn btn-outline-danger" href='{% url "shop:product_delete" object.id %}'>Удалить</a>
+                        </div>
+                    </div>
                 </div>
+                {% endfor %}
             </div>
         </div>
-        {% endfor %}
-    </div>
     </div>
     {% endblock %}

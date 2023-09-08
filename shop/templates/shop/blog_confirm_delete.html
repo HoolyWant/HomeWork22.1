@@ -10,7 +10,7 @@
                              {% csrf_token %}
                              <h1>Вы действительно хотите удалить блог "{{ object.title }}"?</h1>
                              <button type="submit" class="btn btn-danger">Подтвердить</button>
-                             <a href="{% url 'shop:blog_list' %}" class="btn btn-warning">ОТмена</a>
+                             <a href="{% url 'shop:blog_list' %}" class="btn btn-warning">Отмена</a>
                         </form>
                     </div>
                 </div>
